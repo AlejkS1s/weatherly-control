@@ -24,7 +24,6 @@ A modern web application for visualizing environmental data and controlling IoT 
 - **Real-time Updates**: Live data refresh without page reloads
 
 ### Robust Architecture
-- **WebSocket Communication**: Real-time bidirectional data flow between client and server
 - **RESTful APIs**: Clean HTTP endpoints for data retrieval and device management
 - **InfluxDB Integration**: Time-series database optimized for sensor data storage (optional)
 - **Service Resilience**: Server starts successfully even if external services fail
@@ -92,7 +91,7 @@ weatherly-ctl/
 - `PUT /api/devices/:id/config` - Update device configuration
 - `GET /api/devices/:id/status` - Get device status and connectivity
 
-### Real-time WebSocket Events
+### Real-time Events
 - `real-time-sensor-data` - Live sensor readings
 - `device-status-update` - Device connectivity changes
 - `send-command` - Device command transmission
@@ -188,18 +187,8 @@ CLIENT_URL=http://localhost:5173
 ### Backend Services
 - **InfluxDB Service**: Time-series data queries and aggregations
 - **MQTT Service**: Device communication and message handling
-- **WebSocket Service**: Real-time client-server communication
 - **Validation Middleware**: Request validation using Joi schemas
-- **Error Handler**: Centralized error management
-
-## 🚀 Deployment
-
-The application is ready for deployment with:
-- Environment-based configuration
-- Production build optimization
-- CORS and security middleware
-- Structured logging for monitoring
-- Error handling and graceful shutdowns
+- **Error Handler**: Centralized error management   
 
 ## 📈 Features in Detail
 

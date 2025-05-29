@@ -22,7 +22,7 @@ const TimeSeriesChart = ({ sensorData, title, sensorType, color, unit }) => {
 
     const cutoffTime = new Date(now - timeRangeMs[selectedTimeRange]);
 
-    // Return ALL data points within the time range - no sampling or limiting
+    // Return ALL data points within the time range
     return sensorData
       .filter(d => new Date(d.timestamp) >= cutoffTime)
       .sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
@@ -294,14 +294,6 @@ const TimeSeriesChart = ({ sensorData, title, sensorType, color, unit }) => {
             <div className="text-gray-300 text-xs">{tooltip.time}</div>
           </div>
         )}
-      </div>
-
-      {/* Chart Info */}
-      <div className="mt-3 text-xs text-gray-500 text-center">
-        {sensorData && sensorData.length > 0 
-          ? `${sensorData.length} data points`
-          : 'No data'
-        }
       </div>
     </div>
   );

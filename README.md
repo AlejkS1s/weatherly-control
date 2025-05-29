@@ -13,21 +13,28 @@ A modern web application for visualizing environmental data and controlling IoT 
 
 ### IoT Device Management
 - **Device Control Panel**: Send commands and configure IoT devices remotely
-- **MQTT Integration**: Real-time communication with sensors and actuators
+- **MQTT Integration**: Real-time communication with sensors and actuators (optional)
 - **Device Status Monitoring**: Live connection status and heartbeat monitoring
+- **Graceful Degradation**: App functions even when external services are down
 
-### Modern Architecture
+### Modern UI/UX
+- **FontAwesome Icons**: Professional icon system throughout the application
+- **Error & Loading States**: Clean, prominent error and loading displays above content
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
+- **Real-time Updates**: Live data refresh without page reloads
+
+### Robust Architecture
 - **WebSocket Communication**: Real-time bidirectional data flow between client and server
 - **RESTful APIs**: Clean HTTP endpoints for data retrieval and device management
-- **InfluxDB Integration**: Time-series database optimized for sensor data storage
-- **Error Handling**: Comprehensive error management with user-friendly notifications
+- **InfluxDB Integration**: Time-series database optimized for sensor data storage (optional)
+- **Service Resilience**: Server starts successfully even if external services fail
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 - Node.js 18+ and npm
-- InfluxDB instance (configured in .env)
-- MQTT broker (configured in .env)
+- **Optional**: InfluxDB instance
+- **Optional**: MQTT broker (graceful fallback if unavailable)
 
 ### Installation
 
@@ -37,10 +44,9 @@ cd weatherly-ctl
 npm run install:all
 ```
 
-2. **Configure environment variables:**
+2. **Configure environment variables (optional):**
 ```bash
-# Copy the .env file and update with your configuration
-# InfluxDB and MQTT credentials are already configured
+cp .env.example .env
 ```
 
 3. **Start the development server:**
@@ -51,6 +57,7 @@ npm run dev
 The application will start with:
 - **Backend server**: http://localhost:3001
 - **Frontend client**: http://localhost:5173
+- **Graceful fallback**: Works even without InfluxDB/MQTT
 
 ## 🏗️ Project Structure
 
@@ -126,6 +133,7 @@ npm run lint        # Lint client code
 - **React 18** - Component-based UI framework
 - **Vite** - Fast build tool and development server
 - **Tailwind CSS** - Utility-first CSS framework
+- **FontAwesome** - Professional icon system
 - **Axios** - HTTP client for API requests
 - **Socket.IO Client** - WebSocket client
 - **Canvas API** - High-performance chart rendering
@@ -169,10 +177,12 @@ CLIENT_URL=http://localhost:5173
 ## 🎯 Key Components
 
 ### Frontend Components
-- **Header**: Navigation with system status and time display
+- **Header**: Navigation with FontAwesome icons, system status and time display
 - **DashboardStats**: Real-time metrics cards with trend indicators
 - **TimeSeriesChart**: Interactive canvas-based charts with multiple metrics
 - **DeviceControlPanel**: Device management interface with command sending
+- **ErrorDisplay**: Prominent error notifications with FontAwesome icons
+- **LoadingDisplay**: Clean loading states with animated FontAwesome spinner
 - **Footer**: System information and status indicators
 
 ### Backend Services
@@ -210,6 +220,25 @@ The application is ready for deployment with:
 - Interactive hover tooltips with precise values
 - Time range selection (1h, 6h, 24h, 7d)
 - Multiple metric support (temperature, humidity, pressure)
+
+## 🔧 Development Features
+
+### Service Resilience
+- **Graceful Startup**: Server starts successfully even if InfluxDB or MQTT are unavailable
+- **Mock Data**: Automatic fallback to realistic sensor data when external services fail
+- **Error Recovery**: Individual service failures don't crash the entire application
+- **Optional Dependencies**: InfluxDB and MQTT are now optional for development
+
+### FontAwesome Integration
+- **Centralized Management**: All icons defined in `/client/src/components/icons.jsx`
+- **Easy Maintenance**: Single place to update or swap icons
+- **Performance**: Optimized icon loading with tree-shaking
+
+### Component Architecture
+- **Separated Concerns**: Error and loading displays extracted to dedicated components
+- **Reusable Components**: Clean, composable UI elements
+- **Top-level Notifications**: Error and loading states prominently displayed above content
+- **Consistent Styling**: Unified design language across all components
 
 ---
 
